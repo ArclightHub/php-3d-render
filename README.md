@@ -2,6 +2,7 @@
 
 Engine for rendering 3D objects into the terminal
 
+```
  *
  *                  00++------++------++00
  *                ..  --              ..  --
@@ -27,3 +28,4 @@ Engine for rendering 3D objects into the terminal
  *                    --  ..              --  ..
  *                      00++------++------++00
  *
+```
