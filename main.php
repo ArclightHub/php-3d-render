@@ -4,6 +4,7 @@ use scenes\BasicCubeScene;
 use scenes\OrthogonalCubeScene;
 use scenes\BasicCylinderScene;
 use scenes\BasicSphereScene;
+use scenes\BasicHyperboloidScene;
 use scenes\OrthogonalSphereScene;
 use engine\VoxelScanRenderEngine;
 use engine\VertexScanRenderEngine;
@@ -134,6 +135,7 @@ $scenes = [
     'BasicCylinderScene' => BasicCylinderScene::class,
     'BasicSphereScene' => BasicSphereScene::class,
     'OrthogonalSphereScene' => OrthogonalSphereScene::class,
+    'BasicHyperboloidScene' => BasicHyperboloidScene::class,
 ];
 $scene = askQuestion(
     array_keys($scenes),
@@ -180,7 +182,7 @@ if ($animate) {
             $i/3
         );
         $engine->render($sceneToRender, $resolution, $resolution);
-        sleep(0.01);
+        sleep(0.1);
     }
 }
 $engine->render($sceneToRender, $resolution, $resolution);

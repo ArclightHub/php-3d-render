@@ -4,9 +4,10 @@ namespace scenes;
 
 use objects\cartesian\Location;
 use objects\cartesian\Rotation;
-use objects\primitives\Cylinder;
+use objects\primitives\Cube;
+use objects\primitives\Hyperboloid;
 
-class BasicCylinderScene extends Scene
+class BasicHyperboloidScene extends Scene
 {
     /**
      * @param null|null $size
@@ -18,7 +19,7 @@ class BasicCylinderScene extends Scene
      * @param int $rotZ
      */
     public function __construct(
-        $size = 4,
+        $size = 7,
         $x = 0,
         $y = 0,
         $z = 0,
@@ -29,9 +30,9 @@ class BasicCylinderScene extends Scene
         if (is_null($size)) {
             $size = 8;
         }
-        $location = new Location($x + 16,$y + 16, $z);
-        $rotation = new Rotation($rotX, $rotY, $rotZ);
-        $shape = new Cylinder($location, $rotation, $size);
-        $this->addObjectToScene($shape);
+        $cubeLocation = new Location($x + 16,$y + 16,$z);
+        $cubeRotation = new Rotation($rotX + 22.5, $rotY + 22.5, $rotZ);
+        $cube = new Hyperboloid($cubeLocation, $cubeRotation, $size);
+        $this->addObjectToScene($cube);
     }
 }
