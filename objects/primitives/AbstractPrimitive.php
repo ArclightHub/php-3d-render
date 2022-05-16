@@ -66,23 +66,4 @@ abstract class AbstractPrimitive implements PolygonInterface
     {
         $this->points = $points;
     }
-
-    public function generateMesh()
-    {
-        foreach ($this->points as $point) {
-            $sums = [];
-            foreach ($this->points as $pointCompare) {
-                if ($point === $pointCompare) {
-                    continue;
-                }
-                $xDiff = abs($point->getX() - $pointCompare->getX());
-                $yDiff = abs($point->getY() - $pointCompare->getY());
-                $zDiff = abs($point->getZ() - $pointCompare->getZ());
-                $vectorSum = sqrt(pow($xDiff, 2) + pow($yDiff, 2) + pow($zDiff, 2));
-                $sums[$vectorSum][] = $pointCompare;
-            }
-            $closest = min(array_keys($sums));
-            $point->setLines($sums[$closest]);
-        }
-    }
 }

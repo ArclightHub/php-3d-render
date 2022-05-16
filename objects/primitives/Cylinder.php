@@ -26,9 +26,6 @@ class Cylinder extends AbstractPrimitive implements PolygonInterface
 
         // Since a cube has regular sides, we should calculate all its points from there
         $this->setPoints($this->generatePoints($size));
-
-        // Now calculate the lines from the points.
-        $this->generateMesh();
     }
 
     /**

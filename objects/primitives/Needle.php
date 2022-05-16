@@ -14,6 +14,8 @@ use objects\cartesian\Rotation;
  */
 class Needle extends AbstractPrimitive implements PolygonInterface
 {
+    use GenerateMeshTrait;
+
     /**
      * @param Location $location
      * @param Rotation $rotation
@@ -33,7 +35,7 @@ class Needle extends AbstractPrimitive implements PolygonInterface
         // Since a cube has regular sides, we should calculate all its points from there
         $this->setPoints($this->generatePoints($size));
 
-        $this->generateMesh();
+        $this->generateMeshForClosestPoints($this);
     }
 
     /**

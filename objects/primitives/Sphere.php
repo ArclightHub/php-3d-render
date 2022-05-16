@@ -6,6 +6,24 @@ use objects\cartesian\Location;
 use objects\cartesian\Point;
 use objects\cartesian\Rotation;
 
+/**
+ * SOLID:
+ *
+ * Single Responsibility:
+ * - Encapsulates all the logic required to generate a mesh of points in the shape of a sphere.
+ *
+ * Open-closed Principle
+ * - It can be used as part of a bigger polygon or its lines can be moved to form a different shape.
+ *
+ * Liskov Substitution Principle
+ * - It is a shape which implements the PolygonInterface interface, can be used in any code which uses a polygon.
+ *
+ * Dependency Inversion Principle
+ * - The object has no knowledge of how it will be used.
+ *
+ * Class Sphere
+ * @package objects\primitives
+ */
 class Sphere extends AbstractPrimitive implements PolygonInterface
 {
     /**
@@ -41,7 +59,6 @@ class Sphere extends AbstractPrimitive implements PolygonInterface
         $ringLines = [];
         for ($z = - $zSize; $z <= $zSize; $z += $zSize/$div) {
             $dist = sqrt(1 - pow($z/$zSize, 2));
-
             for ($deg = 0; $deg < 360; $deg += $degreeIncrements) {
                 $x = $this->rotateX($size, $size, $deg);
                 $y = $this->rotateY($size, $size, $deg);

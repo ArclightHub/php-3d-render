@@ -8,6 +8,8 @@ use objects\cartesian\Rotation;
 
 class Cube extends AbstractPrimitive implements PolygonInterface
 {
+    use GenerateMeshTrait;
+
     /**
      * @param Location $location
      * @param Rotation $rotation
@@ -28,7 +30,7 @@ class Cube extends AbstractPrimitive implements PolygonInterface
         $this->setPoints($this->generatePoints($size));
 
         // Now calculate the lines from the points.
-        $this->generateMesh();
+        $this->generateMeshForClosestPoints($this);
 
         // Verify the state of the cube
         foreach ($this->getPoints() as $point) {

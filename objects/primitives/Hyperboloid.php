@@ -8,6 +8,8 @@ use objects\cartesian\Rotation;
 
 class Hyperboloid extends AbstractPrimitive implements PolygonInterface
 {
+    use GenerateMeshTrait;
+
     /**
      * @param Location $location
      * @param Rotation $rotation
@@ -28,7 +30,7 @@ class Hyperboloid extends AbstractPrimitive implements PolygonInterface
         $this->setPoints($this->generatePoints($size));
 
         // Now calculate the lines from the points.
-        $this->generateMesh();
+        $this->generateMeshForClosestPoints($this);
     }
 
     /**
