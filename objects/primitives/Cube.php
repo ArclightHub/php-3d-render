@@ -6,6 +6,24 @@ use objects\cartesian\Location;
 use objects\cartesian\Point;
 use objects\cartesian\Rotation;
 
+/**
+ * SOLID:
+ *
+ * Single Responsibility:
+ * - Encapsulates all the logic required to generate a mesh of points in the shape of a cube.
+ *
+ * Open-closed Principle
+ * - It can be used as part of a bigger polygon or its lines can be moved to form a different shape.
+ *
+ * Liskov Substitution Principle
+ * - It is a shape which implements the PolygonInterface interface, can be used in any code which uses a polygon.
+ *
+ * Dependency Inversion Principle
+ * - The object has no knowledge of how it will be used.
+ *
+ * Class Cube
+ * @package objects\primitives
+ */
 class Cube extends AbstractPrimitive implements PolygonInterface
 {
     use GenerateMeshTrait;
