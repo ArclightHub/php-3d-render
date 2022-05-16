@@ -5,9 +5,8 @@ namespace objects\primitives;
 use objects\cartesian\Location;
 use objects\cartesian\Point;
 use objects\cartesian\Rotation;
-use objects\interfaces\PolygonInterface;
 
-class Ring extends Primitive implements PolygonInterface
+class Ring extends AbstractPrimitive implements PolygonInterface
 {
     /**
      * @param Location $location
@@ -39,14 +38,14 @@ class Ring extends Primitive implements PolygonInterface
     {
         $size = $size * (1/sqrt(2));
         $points = [];
-        $degreeIncrements = 45;
+        $degreeIncrements = 30;
         for ($deg = 0; $deg < 360; $deg += $degreeIncrements) {
             $x = $this->rotateX($size, $size, $deg);
             $y = $this->rotateY($size, $size, $deg);
             $points[] = new Point(
                 $x,
                 $y,
-                $size
+                0
             );
         }
         return $points;

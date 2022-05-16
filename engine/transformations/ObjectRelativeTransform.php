@@ -4,7 +4,7 @@ namespace engine\transforms;
 
 use objects\cartesian\Location;
 use objects\cartesian\Point;
-use objects\interfaces\PolygonInterface;
+use objects\primitives\PolygonInterface;
 
 class ObjectRelativeTransform
 {

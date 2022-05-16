@@ -5,9 +5,8 @@ namespace objects\primitives;
 use objects\cartesian\Location;
 use objects\cartesian\Point;
 use objects\cartesian\Rotation;
-use objects\interfaces\PolygonInterface;
 
-class Cylinder extends Primitive implements PolygonInterface
+class Cylinder extends AbstractPrimitive implements PolygonInterface
 {
     /**
      * @param Location $location

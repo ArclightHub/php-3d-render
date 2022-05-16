@@ -4,7 +4,7 @@ namespace engine\transforms;
 
 use objects\cartesian\Point;
 use objects\cartesian\Rotation;
-use objects\interfaces\PolygonInterface;
+use objects\primitives\PolygonInterface;
 
 /**
  * $point1x = $point->getX() * cos($xRadians) - $point->getY() * sin($xRadians);

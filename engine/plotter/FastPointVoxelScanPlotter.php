@@ -5,15 +5,15 @@ namespace engine\plotter;
 use engine\transforms\AffineTransform;
 use engine\transforms\ObjectRelativeTransform;
 use objects\cartesian\Point;
-use objects\interfaces\PolygonInterface;
-use objects\primitives\Primitive;
+use objects\primitives\PolygonInterface;
+use objects\primitives\AbstractPrimitive;
 
 /**
  * Only plots points.
  */
 class FastPointVoxelScanPlotter implements VoxelScanPlotterInterface
 {
-    /** @var PolygonInterface|Primitive */
+    /** @var PolygonInterface|AbstractPrimitive */
     private $sceneObject;
 
     /**

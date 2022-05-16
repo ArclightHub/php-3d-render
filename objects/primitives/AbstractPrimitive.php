@@ -6,12 +6,12 @@ use objects\cartesian\Line;
 use objects\cartesian\Location;
 use objects\cartesian\Point;
 use objects\cartesian\Rotation;
-use objects\interfaces\PolygonInterface;
+use objects\primitives\PolygonInterface;
 
 /**
  * @abstract
  */
-abstract class Primitive implements PolygonInterface
+abstract class AbstractPrimitive implements PolygonInterface
 {
     private Location $location;
     private Rotation $rotation;

@@ -4,7 +4,7 @@ namespace engine;
 
 use engine\plotter\VertexScanPlotter;
 use engine\writer\BatchedEchoOutputBufferWriter;
-use objects\interfaces\PolygonInterface;
+use objects\primitives\PolygonInterface;
 use scenes\Scene;
 
 class VertexScanRenderEngine

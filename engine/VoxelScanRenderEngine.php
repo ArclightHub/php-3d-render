@@ -5,7 +5,7 @@ namespace engine;
 use engine\plotter\VectorIntersectionVoxelScanPlotter;
 use engine\plotter\FastPointVoxelScanPlotter;
 use engine\writer\EchoOutputBufferWriter;
-use objects\interfaces\PolygonInterface;
+use objects\primitives\PolygonInterface;
 use scenes\Scene;
 
 class VoxelScanRenderEngine

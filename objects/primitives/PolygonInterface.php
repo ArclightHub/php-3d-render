@@ -1,6 +1,6 @@
 <?php
 
-namespace objects\interfaces;
+namespace objects\primitives;
 
 /**
  * @interface

@@ -5,9 +5,8 @@ namespace objects\primitives;
 use objects\cartesian\Location;
 use objects\cartesian\Point;
 use objects\cartesian\Rotation;
-use objects\interfaces\PolygonInterface;
 
-class Hyperboloid extends Primitive implements PolygonInterface
+class Hyperboloid extends AbstractPrimitive implements PolygonInterface
 {
     /**
      * @param Location $location

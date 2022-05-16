@@ -6,6 +6,7 @@ use scenes\BasicCylinderScene;
 use scenes\BasicSphereScene;
 use scenes\BasicHyperboloidScene;
 use scenes\OrthogonalSphereScene;
+use scenes\DradisScannerScene;
 use engine\VoxelScanRenderEngine;
 use engine\VertexScanRenderEngine;
 
@@ -90,7 +91,6 @@ function askQuestion($options = null, $question = null, $default = null)
 }
 
 $importDirectories = [
-    "objects/interfaces",
     "objects/primitives",
     "objects/cartesian",
     "scenes",
@@ -125,7 +125,7 @@ foreach ($importDirectories as $importDirectory) {
 }
 
 // Select a resolution
-$resolution = askQuestion(null, "Please enter a resolution. (32)", 32);
+$resolution = askQuestion(null, "Please enter a resolution. (48)", 48);
 echo "Output will be a $resolution X $resolution\n";
 
 // Select the scene to render
@@ -136,6 +136,7 @@ $scenes = [
     'BasicSphereScene' => BasicSphereScene::class,
     'OrthogonalSphereScene' => OrthogonalSphereScene::class,
     'BasicHyperboloidScene' => BasicHyperboloidScene::class,
+    'DradisScannerScene' => DradisScannerScene::class,
 ];
 $scene = askQuestion(
     array_keys($scenes),
