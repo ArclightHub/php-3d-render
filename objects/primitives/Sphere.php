@@ -33,12 +33,13 @@ class Sphere extends AbstractPrimitive implements PolygonInterface
      */
     private function generatePoints($size)
     {
-        $zSize = $size * 1.4142;
+        $zSize = $size * sqrt(2);
         $points = [];
-        $degreeIncrements = 30;
+        $degreeIncrements = 15;
+        $div = 180/$degreeIncrements;
         // Generate $size*2 rings of 360/$degreeIncrements points.
         $ringLines = [];
-        for ($z = - $zSize; $z < $zSize; $z+=2) {
+        for ($z = - $zSize; $z <= $zSize; $z += $zSize/$div) {
             $dist = sqrt(1 - pow($z/$zSize, 2));
 
             for ($deg = 0; $deg < 360; $deg += $degreeIncrements) {
