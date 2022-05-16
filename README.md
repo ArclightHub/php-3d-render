@@ -35,4 +35,6 @@ and hit enter or enter values at prompts
  *                      00++------++------++00
  *
 ```
+
+Video when using defaults (enter presses for all prompts):
 [![Cube Render](http://img.youtube.com/vi/nJ5mvYmGkEU/0.jpg)](http://www.youtube.com/watch?v=nJ5mvYmGkEU "Rendering A Cube")
