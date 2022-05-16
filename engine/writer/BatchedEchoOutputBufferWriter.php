@@ -15,7 +15,6 @@ class BatchedEchoOutputBufferWriter implements OutputBufferWriterInterface
 
     public function write($outputBuffer, $xRes, $yRes)
     {
-        $this->clearScreen();
         // Output the buffer
         $deepest = [];
         for ($x = 0; $x < $xRes; $x++) {
@@ -75,10 +74,13 @@ class BatchedEchoOutputBufferWriter implements OutputBufferWriterInterface
                 }
             }
         }
-        echo $border . "\n";
+        $finalLine = '';
         for ($x = 0; $x < $xRes; $x++) {
-            echo self::PIXEL_CORNER . $lines[$x] . self::PIXEL_CORNER . "\n";
+            $finalLine .= self::PIXEL_CORNER . $lines[$x] . self::PIXEL_CORNER . "\n";
         }
+        $this->clearScreen();
+        echo $border . "\n";
+        echo $finalLine;
         echo $border . "\n";
     }
 }

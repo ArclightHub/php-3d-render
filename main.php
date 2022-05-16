@@ -172,6 +172,7 @@ $animate = askQuestion([true, false], "Animate? (0 or 1).", true);
 $start = microtime(true);
 if ($animate) {
     for ($i = 0; $i > -1; $i++) {
+		$start = microtime(true);
         $sceneToRender = new $scenes[$scene](
             $argv[1] ?? null,
             $argv[2] ?? null,
@@ -182,7 +183,12 @@ if ($animate) {
             $i/3
         );
         $engine->render($sceneToRender, $resolution, $resolution);
-        usleep(10000);
+        // Wait 5ms before rendering next frame
+        $total = microtime(true) - $start;
+        $totalFrameTime = 5000;
+        if ($totalFrameTime > $total) {
+            usleep(10000 - $total);
+        }
     }
 }
 $engine->render($sceneToRender, $resolution, $resolution);
