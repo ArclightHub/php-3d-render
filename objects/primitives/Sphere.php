@@ -26,9 +26,6 @@ class Sphere extends AbstractPrimitive implements PolygonInterface
 
         // Since a cube has regular sides, we should calculate all its points from there
         $this->setPoints($this->generatePoints($size));
-
-        // Now calculate the lines from the points.
-        $this->generateMesh();
     }
 
     /**
@@ -41,7 +38,7 @@ class Sphere extends AbstractPrimitive implements PolygonInterface
         $degreeIncrements = 30;
         // Generate $size*2 rings of 360/$degreeIncrements points.
         $ringLines = [];
-        for ($z = - $zSize; $z <= $zSize; $z+=4) {
+        for ($z = - $zSize; $z <= $zSize; $z+=2) {
             $dist = sqrt(1 - pow($z/$zSize, 2));
 
             for ($deg = 0; $deg < 360; $deg += $degreeIncrements) {

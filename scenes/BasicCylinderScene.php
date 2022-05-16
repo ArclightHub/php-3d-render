@@ -27,9 +27,9 @@ class BasicCylinderScene extends Scene
         $rotZ = 0
     ) {
         if (is_null($size)) {
-            $size = 8;
+            $size = 15;
         }
-        $location = new Location($x + 16,$y + 16, $z);
+        $location = new Location($x + 24,$y + 24, $z);
         $rotation = new Rotation($rotX, $rotY, $rotZ);
         $shape = new Cylinder($location, $rotation, $size);
         $this->addObjectToScene($shape);

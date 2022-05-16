@@ -40,7 +40,9 @@ class Cylinder extends AbstractPrimitive implements PolygonInterface
         $points = [];
         $degreeIncrements = 30;
         // Generate $size*2 rings of 360/$degreeIncrements points.
+        $ringLines = [];
         for ($z = - ($size * 1.5); $z <= ($size * 1.5); $z+= $size/3) {
+            $z = round($z);
             $zRadius = $size;
             $currentRingLines = [];
             for ($deg = 0; $deg < 360; $deg += $degreeIncrements) {
@@ -52,9 +54,13 @@ class Cylinder extends AbstractPrimitive implements PolygonInterface
                     $z
                 );
                 $points[] = $newPoint;
-                $currentRingLines[] = $newPoint;
+                $ringLines[$z][] = $newPoint;
             }
-            // Connect the ring segments
+        }
+
+        // Connect the ring segments
+        $verticalLines = [];
+        foreach ($ringLines as $z => $currentRingLines) {
             $maxPointInRing = count($currentRingLines) - 1;
             /** @var Point $firstPoint */
             $firstPoint = $currentRingLines[0];
@@ -66,12 +72,21 @@ class Cylinder extends AbstractPrimitive implements PolygonInterface
              * @var Point $currentRingLine
              */
             foreach ($currentRingLines as $key => $currentRingLine) {
+                $verticalLines[$key][] = $currentRingLine;
                 if (array_key_exists($key + 1, $currentRingLines)) {
                     $currentRingLine->addLine($currentRingLines[$key + 1]);
                 }
             }
         }
-        //var_export($points);
+        // Connect verticals
+        foreach ($verticalLines as $verticalSegment) {
+            foreach ($verticalSegment as $key => $currentRingLine) {
+                if (array_key_exists($key + 1, $verticalSegment)) {
+                    $currentRingLine->addLine($verticalSegment[$key + 1]);
+                }
+            }
+        }
+
         return $points;
     }
 
