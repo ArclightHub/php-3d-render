@@ -8,6 +8,7 @@ To run:
 `php main.php`
 and hit enter or enter values at prompts
 
+```
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00                                                                                                00
 00                                                                                                00
@@ -58,6 +59,7 @@ and hit enter or enter values at prompts
 00                                                                                                00
 00                                                                                                00
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+```
 
 Video when using defaults (enter presses for all prompts):
 [![Cube Render](http://img.youtube.com/vi/XKx7mCJzRus/0.jpg)](http://www.youtube.com/watch?v=XKx7mCJzRus "Rendering A Cube")
