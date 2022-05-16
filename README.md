@@ -37,4 +37,4 @@ and hit enter or enter values at prompts
 ```
 
 Video when using defaults (enter presses for all prompts):
-[![Cube Render](http://img.youtube.com/vi/nJ5mvYmGkEU/0.jpg)](http://www.youtube.com/watch?v=nJ5mvYmGkEU "Rendering A Cube")
+[![Cube Render](http://img.youtube.com/vi/XKx7mCJzRus/0.jpg)](http://www.youtube.com/watch?v=XKx7mCJzRus "Rendering A Cube")
