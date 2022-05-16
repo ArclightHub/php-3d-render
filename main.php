@@ -131,11 +131,11 @@ echo "Output will be a $resolution X $resolution\n";
 // Select the scene to render
 $scenes = [
     'BasicCubeScene' => BasicCubeScene::class,
-    'OrthogonalCubeScene' => OrthogonalCubeScene::class,
     'BasicCylinderScene' => BasicCylinderScene::class,
     'BasicSphereScene' => BasicSphereScene::class,
-    'OrthogonalSphereScene' => OrthogonalSphereScene::class,
     'BasicHyperboloidScene' => BasicHyperboloidScene::class,
+    'OrthogonalCubeScene' => OrthogonalCubeScene::class,
+    'OrthogonalSphereScene' => OrthogonalSphereScene::class,
     'DradisScannerScene' => DradisScannerScene::class,
 ];
 $scene = askQuestion(

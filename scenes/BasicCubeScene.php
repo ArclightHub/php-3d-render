@@ -5,6 +5,7 @@ namespace scenes;
 use objects\cartesian\Location;
 use objects\cartesian\Rotation;
 use objects\primitives\Cube;
+use objects\primitives\Needle;
 
 class BasicCubeScene extends Scene
 {
@@ -33,5 +34,12 @@ class BasicCubeScene extends Scene
         $cubeRotation = new Rotation($rotX + 22.5, $rotY + 22.5, $rotZ);
         $cube = new Cube($cubeLocation, $cubeRotation, $size);
         $this->addObjectToScene($cube);
+        // Add needle
+        //$cube = new Needle(
+        //    new Location($x + 43, $y + 3, $z),
+        //    new Rotation($rotX + 22.5, $rotY + 22.5, $rotZ),
+        //    $size
+        //);
+        //$this->addObjectToScene($cube);
     }
 }

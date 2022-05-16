@@ -28,9 +28,9 @@ class BasicHyperboloidScene extends Scene
         $rotZ = 0
     ) {
         if (is_null($size)) {
-            $size = 8;
+            $size = 12;
         }
-        $cubeLocation = new Location($x + 16,$y + 16,$z);
+        $cubeLocation = new Location($x + 24,$y + 24, $z);
         $cubeRotation = new Rotation($rotX + 22.5, $rotY + 22.5, $rotZ);
         $cube = new Hyperboloid($cubeLocation, $cubeRotation, $size);
         $this->addObjectToScene($cube);
