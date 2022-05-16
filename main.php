@@ -94,8 +94,8 @@ $importDirectories = [
     "objects/primitives",
     "objects/cartesian",
     "scenes",
-    "engine/plotter/transformations",
-    "engine/plotter/writer",
+    "engine/transformations",
+    "engine/writer",
     "engine/plotter",
     "engine",
 ];
@@ -166,7 +166,7 @@ echo "Engine: $engineClass\n";
 $engine = new $engineClass();
 
 // Animate?
-$animate = askQuestion([true, false], "Animate? (0 or 1).", false);
+$animate = askQuestion([true, false], "Animate? (0 or 1).", true);
 
 // Render the scene
 $start = microtime(true);

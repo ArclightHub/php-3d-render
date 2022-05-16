@@ -3,7 +3,7 @@
 namespace engine;
 
 use engine\plotter\VertexScanPlotter;
-use engine\plotter\writer\BatchedEchoOutputBufferWriter;
+use engine\writer\BatchedEchoOutputBufferWriter;
 use objects\interfaces\PolygonInterface;
 use scenes\Scene;
 

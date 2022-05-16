@@ -4,7 +4,7 @@ namespace engine;
 
 use engine\plotter\VectorIntersectionVoxelScanPlotter;
 use engine\plotter\FastPointVoxelScanPlotter;
-use engine\plotter\writer\EchoOutputBufferWriter;
+use engine\writer\EchoOutputBufferWriter;
 use objects\interfaces\PolygonInterface;
 use scenes\Scene;
 

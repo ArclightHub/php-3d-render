@@ -1,6 +1,6 @@
 <?php
 
-namespace engine\plotter\writer;
+namespace engine\writer;
 
 /**
  * @interface

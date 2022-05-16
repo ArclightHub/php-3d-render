@@ -2,8 +2,8 @@
 
 namespace engine\plotter;
 
-use engine\plotter\transforms\AffineTransform;
-use engine\plotter\transforms\ObjectRelativeTransform;
+use engine\transforms\AffineTransform;
+use engine\transforms\ObjectRelativeTransform;
 use objects\cartesian\Point;
 use objects\interfaces\PolygonInterface;
 use objects\primitives\Primitive;
