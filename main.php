@@ -182,7 +182,7 @@ if ($animate) {
             $i/3
         );
         $engine->render($sceneToRender, $resolution, $resolution);
-        sleep(0.1);
+        usleep(10000);
     }
 }
 $engine->render($sceneToRender, $resolution, $resolution);
