@@ -188,7 +188,7 @@ if ($animate) {
         $total = microtime(true) - $start;
         $totalFrameTime = 5000;
         if ($totalFrameTime > $total) {
-            usleep(10000 - $total);
+            usleep($totalFrameTime - $total);
         }
     }
 }

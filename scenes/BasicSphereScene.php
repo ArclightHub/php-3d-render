@@ -27,9 +27,9 @@ class BasicSphereScene extends Scene
         $rotZ = 0
     ) {
         if (is_null($size)) {
-            $size = 9;
+            $size = 13;
         }
-        $location = new Location($x + 16,$y + 16, $z);
+        $location = new Location($x + 24,$y + 24, $z);
         $rotation = new Rotation($rotX, $rotY + 90, $rotZ);
         $shape = new Sphere($location, $rotation, $size);
         $this->addObjectToScene($shape);
