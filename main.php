@@ -9,6 +9,7 @@ use scenes\OrthogonalSphereScene;
 use scenes\DradisScannerScene;
 use engine\VoxelScanRenderEngine;
 use engine\VertexScanRenderEngine;
+use metrics\FrameTimer;
 
 /**
  * The following should generate a well formed cube when using defaults (hit enter at all prompts).
@@ -91,6 +92,7 @@ function askQuestion($options = null, $question = null, $default = null)
 }
 
 $importDirectories = [
+    "metrics",
     "objects/primitives",
     "objects/cartesian",
     "scenes",
@@ -170,10 +172,11 @@ $engine = new $engineClass();
 $animate = askQuestion([true, false], "Animate? (0 or 1).", true);
 
 // Render the scene
+$frameTimer = new FrameTimer();
 $start = microtime(true);
 if ($animate) {
     for ($i = 0; $i > -1; $i++) {
-		$start = microtime(true);
+		$frameTimer->start();
         $sceneToRender = new $scenes[$scene](
             $argv[1] ?? null,
             $argv[2] ?? null,
@@ -185,10 +188,11 @@ if ($animate) {
         );
         $engine->render($sceneToRender, $resolution, $resolution);
         // Wait 5ms before rendering next frame
-        $total = microtime(true) - $start;
+        $frameTimer->end();
+        $frameTimer->printAverageTiming();
         $totalFrameTime = 5000;
-        if ($totalFrameTime > $total) {
-            usleep($totalFrameTime - $total);
+        if ($totalFrameTime > $frameTimer->getTotal()) {
+            usleep($totalFrameTime - $frameTimer->getTotal());
         }
     }
 }
