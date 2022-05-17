@@ -11,7 +11,7 @@ use scenes\AngledSphereScene;
 use scenes\DradisScannerScene;
 use engine\VoxelScanRenderEngine;
 use engine\VertexScanRenderEngine;
-use metrics\FrameTimer;
+use metrics\EchoFrameTimer;
 
 /**
  * The following should generate a well formed cube when using defaults (hit enter at all prompts).
@@ -103,7 +103,7 @@ $engine = new $engineClass();
 $animate = askQuestion([true, false], "Animate? (0 or 1).", true);
 
 // Render the scene
-$frameTimer = new FrameTimer();
+$frameTimer = new EchoFrameTimer();
 $start = microtime(true);
 if ($animate) {
     for ($i = 0; $i > -1; $i++) {

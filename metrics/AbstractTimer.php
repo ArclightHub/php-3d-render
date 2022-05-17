@@ -6,10 +6,25 @@ namespace metrics;
  * But why make it into a class?
  * The principle of least knowledge! (Law of demeter)
  *
- * Class FrameTimer
+ * SOLID:
+ *
+ * Single Responsibility:
+ * - Encapsulates all the logic required to track timing for a given start+stop pair.
+ * - Exposes data for single or multiple pairs for a consumer.
+ *
+ * Open-closed Principle
+ * - It can be used as part of a bigger engine for timing frames or vsyncing.
+ * - Allows computed state (getTotal) to be exposed for use by a consumer, allowing vsyncing.
+ * - Allows computed state (getAverageTotal) to be exposed for use by a consumer.
+ *
+ * Dependency Inversion Principle
+ * - The object has no knowledge of how it will be used.
+ *
+ * Class AbstractTimer
  * @package metrics
+ * @abstract
  */
-class FrameTimer
+abstract class AbstractTimer
 {
     const SAMPLES = 240;
 
@@ -59,7 +74,7 @@ class FrameTimer
     }
 
     /**
-     * @return null
+     * @return float|null
      * @throws \Exception
      */
     public function getTotal()
@@ -71,14 +86,14 @@ class FrameTimer
     }
 
     /**
+     * @return false|float
      * @throws \Exception
      */
-    public function printAverageTiming()
+    public function getAverageTotal()
     {
         if (empty($this->samples)) {
             throw new \Exception("At least one set of samples must be gathered before a value can be returned.");
         }
-        $avgTime = round(array_sum($this->samples) / count($this->samples),4);
-        echo "Average Frame Time: $avgTime\n";
+        return round(array_sum($this->samples) / count($this->samples),4);
     }
 }
