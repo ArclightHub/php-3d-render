@@ -93,6 +93,7 @@ function askQuestion($options = null, $question = null, $default = null)
 
 $importDirectories = [
     "metrics",
+    "traits",
     "objects/primitives",
     "objects/cartesian",
     "scenes",

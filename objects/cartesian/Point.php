@@ -2,31 +2,32 @@
 
 namespace objects\cartesian;
 
-class Point
+/**
+ * A point is a type of location which connects to other points.
+ *
+ * SOLID:
+ *
+ * Single Responsibility:
+ * - Encapsulates the logic required to locate a point in space and the points its connected to, this
+ *   is sometimes also known as a vertex.
+ *
+ * Open-closed Principle
+ * - The point can be extended by applying transformations to it.
+ * - The point can be extended by adding new lines that connect to it.
+ *
+ * Liskov Substitution Principle
+ * - Every instance of a point should be evaluated the same as every other one.
+ *
+ * Dependency Inversion Principle
+ * - The object has no knowledge of how it will be used.
+ *
+ * Class Point
+ * @package objects\cartesian
+ */
+class Point extends Location
 {
-    /** @var int */
-    private $x;
-
-    /** @var int */
-    private $y;
-
-    /** @var int */
-    private $z;
-
     /** @var Point[] */
     private $lines;
-
-    /**
-     * @param $x
-     * @param $y
-     * @param $z
-     */
-    public function __construct($x, $y, $z)
-    {
-        $this->x = number_format($x, 2);
-        $this->y = number_format($y, 2);
-        $this->z = number_format($z, 2);
-    }
 
     /**
      * @return Point[]
@@ -56,53 +57,5 @@ class Point
     public function addLine(Point $line): void
     {
         $this->lines[] = $line;
-    }
-
-    /**
-     * @return int
-     */
-    public function getX(): int
-    {
-        return $this->x;
-    }
-
-    /**
-     * @return int
-     */
-    public function getY(): int
-    {
-        return $this->y;
-    }
-
-    /**
-     * @return int
-     */
-    public function getZ(): int
-    {
-        return $this->z;
-    }
-
-    /**
-     * @param int $x
-     */
-    public function setX(int $x): void
-    {
-        $this->x = $x;
-    }
-
-    /**
-     * @param int $y
-     */
-    public function setY(int $y): void
-    {
-        $this->y = $y;
-    }
-
-    /**
-     * @param int $z
-     */
-    public function setZ(int $z): void
-    {
-        $this->z = $z;
     }
 }

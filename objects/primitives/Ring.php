@@ -5,6 +5,7 @@ namespace objects\primitives;
 use objects\cartesian\Location;
 use objects\cartesian\Point;
 use objects\cartesian\Rotation;
+use traits\RotatableTrait;
 
 /**
  * SOLID:
@@ -27,6 +28,7 @@ use objects\cartesian\Rotation;
 class Ring extends AbstractPrimitive implements PolygonInterface
 {
     use GenerateMeshTrait;
+    use RotatableTrait;
 
     /**
      * @param Location $location
@@ -69,17 +71,5 @@ class Ring extends AbstractPrimitive implements PolygonInterface
             );
         }
         return $points;
-    }
-
-    private function rotateX($x, $y, $rotation)
-    {
-        $radians = (pi() / 180 * $rotation);
-        return $x * cos($radians) - $y * sin($radians);
-    }
-
-    private function rotateY($x, $y, $rotation)
-    {
-        $radians = (pi() / 180 * $rotation);
-        return $x * sin($radians) + $y * cos($radians);
     }
 }

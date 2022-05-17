@@ -10,6 +10,12 @@ use objects\cartesian\Point;
  */
 trait GenerateMeshTrait
 {
+    /**
+     * Determines the distance that the points are from others within the polygon
+     * and connects them to their closest points.
+     *
+     * @param PolygonInterface $polygon
+     */
     public function generateMeshForClosestPoints(PolygonInterface $polygon)
     {
         /** @var Point[] $points */

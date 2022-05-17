@@ -2,6 +2,20 @@
 
 namespace objects\cartesian;
 
+/**
+ * Rotation is defined as degrees around a given axis.
+ *
+ * SOLID:
+ *
+ * Single Responsibility:
+ * - Encapsulates all the logic required to get the rotation of an object.
+ *
+ * Dependency Inversion Principle
+ * - The object has no knowledge of how it will be used.
+ *
+ * Class Rotation
+ * @package objects\cartesian
+ */
 class Rotation
 {
     private $xRotation;

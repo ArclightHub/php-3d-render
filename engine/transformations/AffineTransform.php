@@ -5,6 +5,7 @@ namespace engine\transforms;
 use objects\cartesian\Point;
 use objects\cartesian\Rotation;
 use objects\primitives\PolygonInterface;
+use traits\RotatableTrait;
 
 /**
  * $point1x = $point->getX() * cos($xRadians) - $point->getY() * sin($xRadians);
@@ -12,6 +13,8 @@ use objects\primitives\PolygonInterface;
  */
 class AffineTransform
 {
+    use RotatableTrait;
+
     /**
      * @param PolygonInterface $object
      * @param Point $point
@@ -41,17 +44,5 @@ class AffineTransform
         $rotated->setZ($rotZ);
 
         return $rotated;
-    }
-
-    private function rotateX($x, $y, $rotation)
-    {
-        $radians = (pi() / 180 * $rotation);
-        return $x * cos($radians) - $y * sin($radians);
-    }
-
-    private function rotateY($x, $y, $rotation)
-    {
-        $radians = (pi() / 180 * $rotation);
-        return $x * sin($radians) + $y * cos($radians);
     }
 }

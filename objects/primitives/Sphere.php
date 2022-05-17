@@ -5,6 +5,7 @@ namespace objects\primitives;
 use objects\cartesian\Location;
 use objects\cartesian\Point;
 use objects\cartesian\Rotation;
+use traits\RotatableTrait;
 
 /**
  * SOLID:
@@ -26,6 +27,8 @@ use objects\cartesian\Rotation;
  */
 class Sphere extends AbstractPrimitive implements PolygonInterface
 {
+    use RotatableTrait;
+
     /**
      * @param Location $location
      * @param Rotation $rotation
@@ -100,19 +103,6 @@ class Sphere extends AbstractPrimitive implements PolygonInterface
             }
         }
 
-        //var_export($points);
         return $points;
-    }
-
-    private function rotateX($x, $y, $rotation)
-    {
-        $radians = (pi() / 180 * $rotation);
-        return $x * cos($radians) - $y * sin($radians);
-    }
-
-    private function rotateY($x, $y, $rotation)
-    {
-        $radians = (pi() / 180 * $rotation);
-        return $x * sin($radians) + $y * cos($radians);
     }
 }
