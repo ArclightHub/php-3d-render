@@ -12,9 +12,17 @@ namespace metrics;
 class FrameTimer
 {
     const SAMPLES = 240;
+
+    /** @var int */
     private $cursor = 0;
+
+    /** @var array */
     private $samples = [];
+
+    /** @var null|float */
     private $start = null;
+
+    /** @var null|float */
     private $end = null;
 
     /**
