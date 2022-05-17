@@ -23,12 +23,12 @@ class BatchedEchoOutputBufferWriter implements OutputBufferWriterInterface
 {
     use ClearableWriterTrait;
 
-    const PIXEL_OFF = '  ';
-    const PIXEL_LOWEST = '..';
-    const PIXEL_QUAD = '--';
-    const PIXEL_HALF = '++';
-    const PIXEL_FULL = '==';
-    const PIXEL_CORNER = '00';
+    const PIXEL_OFF = "\033[0m  ";
+    const PIXEL_LOWEST = "\e[0;32m..";
+    const PIXEL_QUAD = "\e[0;33m--";
+    const PIXEL_HALF = "\e[0;33m++";
+    const PIXEL_FULL = "\e[0;31m==";
+    const PIXEL_CORNER = "\e[0;36m00";
 
     public function write($outputBuffer, $xRes, $yRes)
     {

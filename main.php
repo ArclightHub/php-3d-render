@@ -50,6 +50,9 @@ use metrics\EchoFrameTimer;
  *                    --  ..              --  ..
  *                      00++------++------++00
  *
+ * <bad_joke>
+ * If we correctly apply the Single Responsibility Principle we can unite the five SuperSOLID principles and create what is called 'Good Code'.
+ * </bad_joke>
  */
 
 require_once 'functions.php';

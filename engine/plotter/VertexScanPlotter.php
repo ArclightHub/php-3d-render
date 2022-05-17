@@ -61,9 +61,8 @@ class VertexScanPlotter implements PlotterInterface, VertexScanPlotterInterface
                 $x = $relPoint->getX();
                 $y = $relPoint->getY();
                 if (!isset($outputBuffer[$x][$y])) {
-                    $outputBuffer[$x][$y] = 0;
+                    $outputBuffer[$x][$y] = 'solid';
                 }
-                $outputBuffer[$x][$y] = 'solid';
 
                 // Travel the vectors
                 $length = $this->getVectorLength($relPoint, $relPointConnection);
@@ -75,10 +74,11 @@ class VertexScanPlotter implements PlotterInterface, VertexScanPlotterInterface
                 //$zSign = $relPoint->getZ() < $relPointConnection->getZ() ? 1 : -1;
                 $xSeg = abs($relPoint->getX() - $relPointConnection->getX())*$xSign/$length;
                 $ySeg = abs($relPoint->getY() - $relPointConnection->getY())*$ySign/$length;
-                //$zSeg = abs($relPoint->getZ() - $relPointConnection->getZ())*$zSign/$length;
+                //$zSeg = ($relPoint->getZ() - $relPointConnection->getZ())*$zSign/$length;
                 for ($i = 0; $i <= $length; $i++) {
                     $x = round($relPoint->getX() + ($xSeg * $i));
                     $y = round($relPoint->getY() + ($ySeg * $i));
+                    //$z = round($relPoint->getZ() + ($zSeg * $i));
                     if (!isset($outputBuffer[$x][$y])) {
                         $outputBuffer[$x][$y] = 0;
                     }
