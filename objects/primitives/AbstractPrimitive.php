@@ -2,18 +2,35 @@
 
 namespace objects\primitives;
 
-use objects\cartesian\Line;
 use objects\cartesian\Location;
 use objects\cartesian\Point;
 use objects\cartesian\Rotation;
-use objects\primitives\PolygonInterface;
 
 /**
+ * Abstract Primitive shape class which contains the functions that shapes will likely need.
+ *
+ * SOLID:
+ *
+ * Single Responsibility:
+ * - Offloads the logic required by the PolygonInterface to get/set the properties from each child primitive.
+ *
+ * Open-closed Principle
+ * - The various primitives should extend it and the interfact as a contract.
+ *
+ * Liskov Substitution Principle
+ * - It is an abstract shape which implements the PolygonInterface interface, can be used in any code which uses a polygon.
+ *
+ * Dependency Inversion Principle
+ * - The object has no knowledge of how it will be used.
+ *
  * @abstract
  */
 abstract class AbstractPrimitive implements PolygonInterface
 {
+    /** @var Location */
     private Location $location;
+
+    /** @var Rotation */
     private Rotation $rotation;
 
     /** @var Point[] */

@@ -5,13 +5,14 @@ namespace scenes;
 use objects\cartesian\Location;
 use objects\cartesian\Rotation;
 use objects\primitives\Cube;
-use objects\primitives\Needle;
 
 /**
+ * Similar to BasicCubeScene except that it caches the object and points.
+ *
  * SOLID:
  *
  * Single Responsibility:
- * - Creates scene which is comprised of various primitives.
+ * - Creates a cube object and reuses it when already configured once.
  *
  * Liskov Substitution Principle
  * - The engine does not care which scene is loaded, the scenes implementation can change without the engine needing to know.
@@ -19,11 +20,13 @@ use objects\primitives\Needle;
  * Dependency Inversion Principle
  * - The object has no knowledge of how it will be used.
  *
- * Class BasicCubeScene
+ * Class CachedBasicCubeScene
  * @package scenes
  */
-class BasicCubeScene extends Scene
+class CachedBasicCubeScene extends Scene
 {
+    private static $cache = null;
+
     /**
      * @param null|null $size
      * @param int $x
@@ -45,10 +48,17 @@ class BasicCubeScene extends Scene
         if (is_null($size)) {
             $size = 12;
         }
-        $cubeLocation = new Location($x + 24,$y + 24,$z);
         $cubeRotation = new Rotation($rotX + 22.5, $rotY + 22.5, $rotZ);
-        $cube = new Cube($cubeLocation, $cubeRotation, $size);
+        $cubeLocation = new Location($x + 24,$y + 24,$z);
+        if (!is_null(self::$cache)) {
+            $cube = self::$cache;
+            $cube->setRotation($cubeRotation);
+            $cube->setLocation($cubeLocation);
+        } else {
+            $cube = new Cube($cubeLocation, $cubeRotation, $size);
+        }
         $this->addObjectToScene($cube);
+        self::$cache = $cube;
         // Add needle
         //$cube = new Needle(
         //    new Location($x + 43, $y + 3, $z),

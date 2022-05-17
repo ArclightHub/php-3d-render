@@ -1,11 +1,13 @@
 <?php
 
+use scenes\CachedBasicCubeScene;
+use scenes\CachedBasicSphereScene;
 use scenes\BasicCubeScene;
-use scenes\OrthogonalCubeScene;
+use scenes\AngledCubeScene;
 use scenes\BasicCylinderScene;
 use scenes\BasicSphereScene;
 use scenes\BasicHyperboloidScene;
-use scenes\OrthogonalSphereScene;
+use scenes\AngledSphereScene;
 use scenes\DradisScannerScene;
 use engine\VoxelScanRenderEngine;
 use engine\VertexScanRenderEngine;
@@ -133,12 +135,14 @@ echo "Output will be a $resolution X $resolution\n";
 
 // Select the scene to render
 $scenes = [
+    'CachedBasicCubeScene' => CachedBasicCubeScene::class,
+    'CachedBasicSphereScene' => CachedBasicSphereScene::class,
     'BasicCubeScene' => BasicCubeScene::class,
     'BasicCylinderScene' => BasicCylinderScene::class,
     'BasicSphereScene' => BasicSphereScene::class,
     'BasicHyperboloidScene' => BasicHyperboloidScene::class,
-    'OrthogonalCubeScene' => OrthogonalCubeScene::class,
-    'OrthogonalSphereScene' => OrthogonalSphereScene::class,
+    'OrthogonalCubeScene' => AngledCubeScene::class,
+    'OrthogonalSphereScene' => AngledSphereScene::class,
     'DradisScannerScene' => DradisScannerScene::class,
 ];
 $scene = askQuestion(

@@ -18,14 +18,20 @@ namespace objects\cartesian;
  */
 class Rotation
 {
+    /** @var int|float */
     private $xRotation;
+
+    /** @var int|float */
     private $yRotation;
+
+    /** @var int|float */
     private $zRotation;
 
     /**
-     * @param int $xRotation
-     * @param int $yRotation
-     * @param int $zRotation
+     * Rotation constructor.
+     * @param int|float $xRotation
+     * @param int|float $yRotation
+     * @param int|float $zRotation
      */
     public function __construct($xRotation = 0, $yRotation = 0, $zRotation = 0)
     {
@@ -35,7 +41,7 @@ class Rotation
     }
 
     /**
-     * @return mixed
+     * @return float|int
      */
     public function getXRotation()
     {
@@ -43,7 +49,7 @@ class Rotation
     }
 
     /**
-     * @return mixed
+     * @return float|int
      */
     public function getYRotation()
     {
@@ -51,7 +57,7 @@ class Rotation
     }
 
     /**
-     * @return mixed
+     * @return float|int
      */
     public function getZRotation()
     {

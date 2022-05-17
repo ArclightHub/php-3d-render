@@ -4,15 +4,15 @@ namespace scenes;
 
 use objects\cartesian\Location;
 use objects\cartesian\Rotation;
-use objects\primitives\Ring;
+use objects\primitives\Sphere;
 
 /**
- * TODO: We can use the sphere instead of rings and it would actually be a 3d dradis.
+ * Similar to BasicSphereScene except that it caches the Sphere object and points.
  *
  * SOLID:
  *
  * Single Responsibility:
- * - Creates scene which is comprised of various primitives.
+ * - Creates a sphere object and reuses it when already configured once.
  *
  * Liskov Substitution Principle
  * - The engine does not care which scene is loaded, the scenes implementation can change without the engine needing to know.
@@ -20,11 +20,13 @@ use objects\primitives\Ring;
  * Dependency Inversion Principle
  * - The object has no knowledge of how it will be used.
  *
- * Class DradisScannerScene
+ * Class CachedBasicSphereScene
  * @package scenes
  */
-class DradisScannerScene extends Scene
+class CachedBasicSphereScene extends Scene
 {
+    private static $cache = null;
+
     /**
      * @param null|null $size
      * @param int $x
@@ -43,19 +45,19 @@ class DradisScannerScene extends Scene
         $rotY = 0,
         $rotZ = 0
     ) {
-        // Rings
-        for ($i = 4; $i < 32; $i+= 5) {
-            $z = 0;
-            $location = new Location($x + 48,$y + 24, $z-5);
-            $rotation = new Rotation(0, 0, 0);
-            $shape = new Ring($location, $rotation, $i);
-            $this->addObjectToScene($shape);
+        if (is_null($size)) {
+            $size = 13;
         }
-        // Scanner Wave Thingy
-        $z = 0;
-        $location = new Location($x + 48,$y + 24, $z);
-        $rotation = new Rotation(75, $rotY*3, 75);
-        $shape = new Ring($location, $rotation, 32);
+        $location = new Location($x + 24,$y + 24, $z);
+        $rotation = new Rotation($rotX, $rotY + 90, $rotZ);
+        if (!is_null(self::$cache)) {
+            $shape = self::$cache;
+            $shape->setRotation($rotation);
+            $shape->setLocation($location);
+        } else {
+            $shape = new Sphere($location, $rotation, $size);
+            self::$cache = $shape;
+        }
         $this->addObjectToScene($shape);
     }
 }

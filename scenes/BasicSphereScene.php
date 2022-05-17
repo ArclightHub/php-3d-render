@@ -6,6 +6,21 @@ use objects\cartesian\Location;
 use objects\cartesian\Rotation;
 use objects\primitives\Sphere;
 
+/**
+ * SOLID:
+ *
+ * Single Responsibility:
+ * - Creates scene which is comprised of various primitives.
+ *
+ * Liskov Substitution Principle
+ * - The engine does not care which scene is loaded, the scenes implementation can change without the engine needing to know.
+ *
+ * Dependency Inversion Principle
+ * - The object has no knowledge of how it will be used.
+ *
+ * Class BasicSphereScene
+ * @package scenes
+ */
 class BasicSphereScene extends Scene
 {
     /**
