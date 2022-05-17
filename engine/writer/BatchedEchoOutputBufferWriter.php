@@ -2,6 +2,23 @@
 
 namespace engine\writer;
 
+/**
+ * Takes the output buffer, assembles it into an echo-able string and echos it to the terminal.
+ *
+ * SOLID:
+ *
+ * Single Responsibility:
+ * - Outputs the buffer to the terminal using characters based on the plotters weightings.
+ *
+ * Liskov Substitution Principle
+ * - Implements the OutputBufferWriterInterface interface, can be used in any code which uses an OutputBufferWriterInterface.
+ *
+ * Dependency Inversion Principle
+ * - Inverts the engines high level rendering from the low level output mechanism.
+ *
+ * Class BatchedEchoOutputBufferWriter
+ * @package engine\writer
+ */
 class BatchedEchoOutputBufferWriter implements OutputBufferWriterInterface
 {
     use ClearableWriterTrait;
@@ -45,42 +62,37 @@ class BatchedEchoOutputBufferWriter implements OutputBufferWriterInterface
                 $depth3 = $depth;
             }
         }
-        $lines = [];
         $border = '';
+        $finalLine = '';
         for ($x = 0; $x < $xRes; $x++) {
             if ($border == '') {
                 for ($y = 0; $y <= $yRes; $y++) {
                     $border .= self::PIXEL_CORNER;
                 }
             }
-            if (!isset($lines[$x])) {
-                $lines[$x] = '';
-            }
+            $lines = '';
             for ($y = 0; $y < $yRes; $y++) {
                 if (!isset($outputBuffer[$x][$y])) {
-                    $lines[$x] .= self::PIXEL_OFF;
+                    $lines .= self::PIXEL_OFF;
                 } else if($outputBuffer[$x][$y] === 'solid') {
-                    $lines[$x] .= self::PIXEL_CORNER;
+                    $lines .= self::PIXEL_CORNER;
                 }  else if ($outputBuffer[$x][$y] == 0) {
-                    $lines[$x] .= self::PIXEL_OFF;
+                    $lines .= self::PIXEL_OFF;
                 } else if($outputBuffer[$x][$y] == $depth1) {
-                    $lines[$x] .= self::PIXEL_LOWEST;
+                    $lines .= self::PIXEL_LOWEST;
                 }  else if($outputBuffer[$x][$y] == $depth2) {
-                    $lines[$x] .= self::PIXEL_QUAD;
+                    $lines .= self::PIXEL_QUAD;
                 } else if($outputBuffer[$x][$y] <= $depth3) {
-                    $lines[$x] .= self::PIXEL_HALF;
+                    $lines .= self::PIXEL_HALF;
                 } else {
-                    $lines[$x] .= self::PIXEL_FULL;
+                    $lines .= self::PIXEL_FULL;
                 }
             }
-        }
-        $finalLine = '';
-        for ($x = 0; $x < $xRes; $x++) {
-            $finalLine .= self::PIXEL_CORNER . $lines[$x] . self::PIXEL_CORNER . "\n";
+            $finalLine .= self::PIXEL_CORNER . $lines . self::PIXEL_CORNER . "\n";
         }
         $this->clearScreen();
-        echo $border . "\n";
+        echo $border . self::PIXEL_CORNER . "\n";
         echo $finalLine;
-        echo $border . "\n";
+        echo $border . self::PIXEL_CORNER . "\n";
     }
 }

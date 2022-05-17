@@ -2,6 +2,23 @@
 
 namespace engine\writer;
 
+/**
+ * Takes the output buffer and echos it to the terminal.
+ *
+ * SOLID:
+ *
+ * Single Responsibility:
+ * - Outputs the buffer to the terminal using characters based on the plotters weightings.
+ *
+ * Liskov Substitution Principle
+ * - Implements the OutputBufferWriterInterface interface, can be used in any code which uses an OutputBufferWriterInterface.
+ *
+ * Dependency Inversion Principle
+ * - Inverts the engines high level rendering from the low level output mechanism.
+ *
+ * Class EchoOutputBufferWriter
+ * @package engine\writer
+ */
 class EchoOutputBufferWriter implements OutputBufferWriterInterface
 {
     use ClearableWriterTrait;

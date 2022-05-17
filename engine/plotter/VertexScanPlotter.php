@@ -8,6 +8,26 @@ use objects\cartesian\Point;
 use objects\primitives\PolygonInterface;
 use objects\primitives\AbstractPrimitive;
 
+/**
+ * Scans the vectors of all connected points and plots their XY coordinates into the output buffer.
+ *
+ * SOLID:
+ *
+ * Single Responsibility:
+ * - Plots vectors into the output buffer
+ *
+ * Liskov Substitution Principle
+ * - Implements the PlotterInterface and VertexScanPlotterInterface interface, can be used in any code which uses a them.
+ *
+ * Interface Segregation Principle:
+ * - Uses PlotterInterface and VertexScanPlotterInterface interfaces which change the way plot() is called.
+ *
+ * Dependency Inversion Principle
+ * - The higher level RenderEngine does not need to know how the plotting was done
+ *
+ * Class VertexScanPlotter
+ * @package engine\plotter
+ */
 class VertexScanPlotter implements PlotterInterface, VertexScanPlotterInterface
 {
     /** @var PolygonInterface|AbstractPrimitive */
